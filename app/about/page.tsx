@@ -1,3 +1,6 @@
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white pt-24">
@@ -39,6 +42,15 @@ export default function AboutPage() {
             制作スタジオであり、交流の場でもあります。
             アーティストと来場者が垣根を越えてつながり、新しいカルチャーを生み出す場を目指します。
           </p>
+
+          {/* ホームに戻るボタン */}
+          <div className="mt-10">
+            <Link href="/">
+              <Button variant="outline" size="lg">
+                ホームに戻る
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>
