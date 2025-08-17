@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -11,7 +12,7 @@ export default function ThirdRoomPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [enlargedImage, setEnlargedImage] = useState<string | null>(null)
 
-  // RENTAL を削除 → HOME / ABOUT / GALLERY / EVENTS / ACCESS / CONTACT
+  // HOME / ABOUT / GALLERY / EVENTS / ACCESS / CONTACT
   const menuItems = ["HOME", "ABOUT", "GALLERY", "EVENTS", "ACCESS", "CONTACT"]
 
   const galleryImages = [
@@ -106,7 +107,7 @@ export default function ThirdRoomPage() {
             <div className="absolute bottom-8 left-8 text-white">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">3RD ROOM</h1>
               <p className="max-w-xl text-sm md:text-base text-white/90">
-                アーティストとクリエイターのための、展示・制作・交流のためのサードプレイス。
+                アーティストとクリエイターのための、展示・制作・交流のためのサードプレイス
               </p>
             </div>
           </div>
@@ -126,7 +127,9 @@ export default function ThirdRoomPage() {
               <p className="text-gray-600 mb-8 leading-relaxed">
                 私たちは、多様な表現活動をサポートし、アートとコミュニティの架け橋となることを目指しています。
               </p>
-              <Button variant="outline" size="lg">もっと詳しく</Button>
+              <Link href="/about">
+                <Button variant="outline" size="lg">もっと詳しく</Button>
+              </Link>
             </div>
             <div className="relative">
               <img src="/modern-creative-space.png" alt="About 3rd Room" className="w-full rounded-lg shadow-lg" />
@@ -160,9 +163,13 @@ export default function ThirdRoomPage() {
 
       {/* Overlay for enlarged image */}
       {enlargedImage && (
-        <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
           <div className="relative">
-            <img src={enlargedImage} alt="拡大" className="max-w-full max-h-screen object-contain" />
+            <img
+              src={enlargedImage}
+              alt="拡大"
+              className="max-w-full max-h-screen object-contain rounded-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+            />
             <button
               onClick={() => setEnlargedImage(null)}
               className="absolute top-2 right-2 text-white text-3xl"
@@ -213,11 +220,11 @@ export default function ThirdRoomPage() {
               </Button>
             </div>
             {/* Instagram Embed */}
-            <div className="w-full">
+            <div className="w-full h-[500px] overflow-y-scroll rounded-lg border">
               <iframe
                 src="https://www.instagram.com/tokyo.artmuseum/embed"
-                className="w-full h-[500px]"
-                scrolling="no"
+                className="w-full h-[800px]"
+                scrolling="yes"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 loading="lazy"
               ></iframe>
@@ -241,12 +248,13 @@ export default function ThirdRoomPage() {
             </Card>
             <div id="map" className="h-64 rounded-lg overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.9336404029945!2d139.7040592!3d35.6595166"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6478.880734404458!2d139.77581379999998!3d35.715386900000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188e9cfa41cc7f%3A0xbb23dcd494e13c8b!2z5Zu956uL6KW_5rSL576O6KGT6aSo!5e0!3m2!1sja!2sjp!4v1755441252055!5m2!1sja!2sjp"
                 width="100%"
                 height="100%"
-                style={{ border: 0 }}
+                style={{ border: 0, borderRadius: "10px" }}
                 allowFullScreen
                 loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </div>
