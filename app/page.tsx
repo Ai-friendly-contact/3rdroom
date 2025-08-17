@@ -27,7 +27,8 @@ export default function ThirdRoomPage() {
       {/* Events Section */}
       <section id="EVENTS" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">EVENTS</h2>
+          <h2 className="text-4xl font-bold text-center mb-12">EVENTS
+          </h2>
           <div className="grid gap-4 max-w-2xl mx-auto">
             {events.map((event, index) => (
               <div key={index} className="flex items-center justify-between p-4 bg-white rounded-lg border">
