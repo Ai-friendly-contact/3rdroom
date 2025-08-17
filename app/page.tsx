@@ -326,18 +326,21 @@ export default function ThirdRoomPage() {
       {/* Image Modal */}
       {enlargedImage && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-300"
           onClick={() => setEnlargedImage(null)}
         >
-          <div className="relative max-w-4xl max-h-full">
+          <div className="relative max-w-5xl max-h-full animate-in zoom-in-95 duration-300 ease-out">
             <img 
               src={enlargedImage} 
               alt="Enlarged view"
-              className="max-w-full max-h-full object-contain rounded-lg"
+              className="max-w-full max-h-full object-contain rounded-xl shadow-2xl transform transition-transform duration-300 ease-out"
             />
             <button 
-              onClick={() => setEnlargedImage(null)}
-              className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/70 transition-colors"
+              onClick={(e) => {
+                e.stopPropagation()
+                setEnlargedImage(null)
+              }}
+              className="absolute top-4 right-4 text-white bg-black/40 backdrop-blur-sm rounded-full p-3 hover:bg-black/60 transition-all duration-200 hover:scale-110"
             >
               <X size={20} />
             </button>
