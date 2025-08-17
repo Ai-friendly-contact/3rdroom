@@ -233,18 +233,20 @@ export default function ThirdRoomPage() {
           {/* Instagram Feed */}
           <div className="max-w-4xl mx-auto">
             <h3 className="text-2xl font-semibold mb-6">最新のInstagram投稿</h3>
-            <div className="bg-white rounded-lg shadow-lg p-6 overflow-hidden">
-              <div className="h-96 overflow-y-auto">
-                <iframe 
-                  src="https://www.instagram.com/nmwatokyo/embed" 
-                  width="100%" 
-                  height="600"
-                  frameBorder="0" 
-                  scrolling="yes"
-                  allowTransparency="true"
-                  className="border-0 rounded-lg"
-                ></iframe>
-              </div>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <iframe 
+                src="https://www.instagram.com/nmwatokyo/embed" 
+                width="100%" 
+                height="600"
+                frameBorder="0" 
+                scrolling="no"
+                allowTransparency="true"
+                className="border-0 rounded-lg"
+                style={{
+                  overflowY: 'hidden',
+                  height: '600px'
+                }}
+              ></iframe>
             </div>
           </div>
         </div>
