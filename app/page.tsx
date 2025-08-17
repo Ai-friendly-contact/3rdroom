@@ -2,15 +2,37 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+// import { Button } from "@/components/ui/button"
+// import { Card, CardContent } from "@/components/ui/card"
+// import { Badge } from "@/components/ui/badge"
 import { Menu, X, Instagram, Twitter, Facebook, Youtube, MapPin, Clock, Phone, Mail } from "lucide-react"
+
+// 基本的なButtonコンポーネント（shadcn/uiの代替）
+const Button = ({ children, variant = "default", size = "default", className = "", ...props }) => {
+  const baseClasses = "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50 disabled:pointer-events-none"
+  const variants = {
+    default: "bg-gray-900 text-white hover:bg-gray-800",
+    outline: "border border-gray-300 bg-white hover:bg-gray-50"
+  }
+  const sizes = {
+    default: "h-10 px-4 py-2",
+    lg: "h-11 px-8 text-base"
+  }
+  
+  return (
+    <button 
+      className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  )
+}
 
 export default function ThirdRoomPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [enlargedImage, setEnlargedImage] = useState<string | null>(null)
+  const [enlargedImage, setEnlargedImage] = useState(null)
 
   // HOME / ABOUT / GALLERY / EVENTS / ACCESS / CONTACT
   const menuItems = ["HOME", "ABOUT", "GALLERY", "EVENTS", "ACCESS", "CONTACT"]
@@ -30,9 +52,17 @@ export default function ThirdRoomPage() {
     { date: "2025.02.10", title: "トークイベント", type: "Talk Event" },
   ]
 
-  const handleMenuClick = (item: string) => {
+  const handleMenuClick = (item) => {
     if (item === "ACCESS" || item === "CONTACT") {
       document.getElementById("map-section")?.scrollIntoView({ behavior: "smooth" })
+    } else if (item === "GALLERY") {
+      document.getElementById("GALLERY")?.scrollIntoView({ behavior: "smooth" })
+    } else if (item === "EVENTS") {
+      document.getElementById("EVENTS")?.scrollIntoView({ behavior: "smooth" })
+    } else if (item === "ABOUT") {
+      document.getElementById("ABOUT")?.scrollIntoView({ behavior: "smooth" })
+    } else if (item === "HOME") {
+      document.getElementById("HOME")?.scrollIntoView({ behavior: "smooth" })
     }
   }
 
@@ -138,7 +168,155 @@ export default function ThirdRoomPage() {
         </div>
       </section>
 
-      {/* 以降（Gallery, Events, Follow Us, Access, Footer）はあなたのコードと同じ */}
+      {/* Gallery */}
+      <section id="GALLERY" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">GALLERY</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {galleryImages.map((image, index) => (
+              <div 
+                key={index} 
+                className="relative group cursor-pointer overflow-hidden rounded-lg"
+                onClick={() => setEnlargedImage(image)}
+              >
+                <img 
+                  src={image} 
+                  alt={`Gallery ${index + 1}`}
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Events */}
+      <section id="EVENTS" className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">EVENTS</h2>
+          <div className="grid gap-4 max-w-2xl mx-auto">
+            {events.map((event, index) => (
+              <div key={index} className="flex items-center justify-between p-6 bg-white rounded-lg border hover:shadow-md transition-shadow">
+                <div>
+                  <p className="text-sm text-gray-500 mb-1">{event.date}</p>
+                  <h3 className="font-semibold text-lg">{event.title}</h3>
+                </div>
+                <span className="px-3 py-1 bg-gray-100 text-sm rounded-full text-gray-700">
+                  {event.type}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Follow Us */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-8">FOLLOW US</h2>
+          <div className="flex justify-center space-x-6">
+            <a href="#" className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow">
+              <Instagram size={24} className="text-gray-700 hover:text-black" />
+            </a>
+            <a href="#" className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow">
+              <Twitter size={24} className="text-gray-700 hover:text-black" />
+            </a>
+            <a href="#" className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow">
+              <Facebook size={24} className="text-gray-700 hover:text-black" />
+            </a>
+            <a href="#" className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow">
+              <Youtube size={24} className="text-gray-700 hover:text-black" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Access & Contact */}
+      <section id="map-section" className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">ACCESS & CONTACT</h2>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <h3 className="text-2xl font-semibold mb-6">アクセス情報</h3>
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <MapPin className="mr-4 text-gray-600" size={20} />
+                  <span className="text-gray-700">東京都渋谷区〇〇-〇-〇</span>
+                </div>
+                <div className="flex items-center">
+                  <Clock className="mr-4 text-gray-600" size={20} />
+                  <span className="text-gray-700">10:00 - 19:00 (火曜定休)</span>
+                </div>
+                <div className="flex items-center">
+                  <Phone className="mr-4 text-gray-600" size={20} />
+                  <span className="text-gray-700">03-1234-5678</span>
+                </div>
+                <div className="flex items-center">
+                  <Mail className="mr-4 text-gray-600" size={20} />
+                  <span className="text-gray-700">info@3rdroom.com</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                <p className="text-gray-500">Google Map エリア</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-black text-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">3RD ROOM</h3>
+              <p className="text-gray-400">アーティストとクリエイターのためのサードプレイス</p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">FOLLOW US</h4>
+              <div className="flex space-x-4">
+                <Instagram size={20} className="text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                <Twitter size={20} className="text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                <Facebook size={20} className="text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                <Youtube size={20} className="text-gray-400 hover:text-white cursor-pointer transition-colors" />
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">CONTACT</h4>
+              <p className="text-gray-400 text-sm">info@3rdroom.com</p>
+              <p className="text-gray-400 text-sm">03-1234-5678</p>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p className="text-gray-400 text-sm">&copy; 2025 3RD ROOM. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Image Modal */}
+      {enlargedImage && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+          onClick={() => setEnlargedImage(null)}
+        >
+          <div className="relative max-w-4xl max-h-full">
+            <img 
+              src={enlargedImage} 
+              alt="Enlarged view"
+              className="max-w-full max-h-full object-contain rounded-lg"
+            />
+            <button 
+              onClick={() => setEnlargedImage(null)}
+              className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/70 transition-colors"
+            >
+              <X size={20} />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
