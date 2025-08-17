@@ -75,6 +75,23 @@ export default function ThirdRoomPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Custom scrollbar styles */}
+      <style jsx>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #c1c1c1;
+          border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #a8a8a8;
+        }
+      `}</style>
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b">
         <div className="container mx-auto px-4">
@@ -234,19 +251,20 @@ export default function ThirdRoomPage() {
           <div className="max-w-4xl mx-auto">
             <h3 className="text-2xl font-semibold mb-6">最新のInstagram投稿</h3>
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <iframe 
-                src="https://www.instagram.com/nmwatokyo/embed" 
-                width="100%" 
-                height="600"
-                frameBorder="0" 
-                scrolling="no"
-                allowTransparency="true"
-                className="border-0 rounded-lg"
-                style={{
-                  overflowY: 'hidden',
-                  height: '600px'
-                }}
-              ></iframe>
+              <div className="h-[600px] overflow-y-auto custom-scrollbar">
+                <iframe 
+                  src="https://www.instagram.com/nmwatokyo/embed" 
+                  width="100%" 
+                  height="800"
+                  frameBorder="0" 
+                  scrolling="no"
+                  allowTransparency="true"
+                  className="border-0"
+                  style={{
+                    minHeight: '800px'
+                  }}
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
