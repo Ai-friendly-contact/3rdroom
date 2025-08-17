@@ -215,8 +215,8 @@ export default function ThirdRoomPage() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-8">FOLLOW US</h2>
-          <div className="flex justify-center space-x-6">
-            <a href="#" className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow">
+          <div className="flex justify-center space-x-6 mb-12">
+            <a href="https://www.instagram.com/nmwatokyo/" target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow">
               <Instagram size={24} className="text-gray-700 hover:text-black" />
             </a>
             <a href="#" className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow">
@@ -228,6 +228,24 @@ export default function ThirdRoomPage() {
             <a href="#" className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow">
               <Youtube size={24} className="text-gray-700 hover:text-black" />
             </a>
+          </div>
+          
+          {/* Instagram Feed */}
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-2xl font-semibold mb-6">最新のInstagram投稿</h3>
+            <div className="bg-white rounded-lg shadow-lg p-6 overflow-hidden">
+              <div className="h-96 overflow-y-auto">
+                <iframe 
+                  src="https://www.instagram.com/nmwatokyo/embed" 
+                  width="100%" 
+                  height="600"
+                  frameBorder="0" 
+                  scrolling="yes"
+                  allowTransparency="true"
+                  className="border-0 rounded-lg"
+                ></iframe>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -242,7 +260,7 @@ export default function ThirdRoomPage() {
               <div className="space-y-4">
                 <div className="flex items-center">
                   <MapPin className="mr-4 text-gray-600" size={20} />
-                  <span className="text-gray-700">東京都渋谷区〇〇-〇-〇</span>
+                  <span className="text-gray-700">東京都台東区西浅草3-25-11 國立劇場前ビル3F</span>
                 </div>
                 <div className="flex items-center">
                   <Clock className="mr-4 text-gray-600" size={20} />
@@ -259,8 +277,17 @@ export default function ThirdRoomPage() {
               </div>
             </div>
             <div>
-              <div className="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
-                <p className="text-gray-500">Google Map エリア</p>
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.440367202229!2d139.77581379999998!3d35.715386900000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188e9cfa41cc7f%3A0xbb23dcd494e13c8b!2z5Zu956uL6KW_5rSL576O6KGT6aSo!5e0!3m2!1sja!2sjp!4v1755445226116!5m2!1sja!2sjp" 
+                  width="100%" 
+                  height="450" 
+                  style={{border:0}} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-96"
+                ></iframe>
               </div>
             </div>
           </div>
