@@ -95,7 +95,7 @@ export default function ThirdRoomPage() {
           <div className="max-w-4xl px-4">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">3RD ROOM</h1>
             <p className="text-xl md:text-2xl mb-8 animate-fade-in-delay">
-              クリエイティブな空間で、新しい表現を発見する
+              クリエイティブな空間で、新しい表現を発見する。
             </p>
             <Button size="lg" className="bg-white text-black hover:bg-gray-100 animate-fade-in-delay-2">
               詳細を見る
