@@ -4,9 +4,9 @@ import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'Ailly - 未来を創るイノベーション',
+  description: '最新のテクノロジーと創造性を融合させ、お客様のビジネスを次のレベルへと導きます。',
+  generator: 'Ailly Solutions',
 }
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <head>
         <style>{`
 html {
