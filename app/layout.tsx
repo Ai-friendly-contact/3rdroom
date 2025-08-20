@@ -4,9 +4,9 @@ import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Ailly - 未来を創るイノベーション',
-  description: '最新のテクノロジーと創造性を融合させ、お客様のビジネスを次のレベルへと導きます。',
-  generator: 'Ailly Solutions',
+  title: '3rd ROOM',
+  description: 'Created by Ailly',
+  generator: 'Ailly.app',
 }
 
 export default function RootLayout({
